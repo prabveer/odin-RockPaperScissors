@@ -1,19 +1,19 @@
 function playRound(playerSelect, computerSelect)
 {
     if(playerSelect == computerSelect)
-    {
-        alert("Tie")
+    {   
+        document.getElementById("sub").innerHTML = "TIE!";
         return;
     }
     if((playerSelect == "rock" && computerSelect == "scissors") || (playerSelect == "paper" && computerSelect == "rock") || (playerSelect == "scissors" && computerSelect == "paper"))
     {
-        alert("You Win! " + playerSelect + " Beats " + computerSelect);
+        document.getElementById("sub").innerHTML = "You Win! " + playerSelect + " Beats " + computerSelect;
         return 1;
 
     }
     else
     {
-        alert("You Lose! " + computerSelect + " Beats " + playerSelect);
+        document.getElementById("sub").innerHTML = "You Lose! " + computerSelect + " Beats " + playerSelect;
         return 2;
     }
 
@@ -36,34 +36,19 @@ function computerChoice()
 }
 function playersetup()
 {
-    let answer = prompt("Please enter rock, paper, or scissors");
-    answer = answer.toLowerCase();
-    while(answer != "rock" && answer != "paper" && answer != "scissors")
-    {
-        answer = prompt("Please enter rock, paper, or scissors");
-        answer = answer.toLowerCase();
-    }
-    return answer;
-}
-function winner(playerScore, computerScore)
-{
-    if(playerScore > computerScore)
-        alert("Player Wins!")
-    else if (computerScore > playerScore)
-        alert("Computer Wins!")
-    else
-        alert("DRAW")
-}
-function game()
-{
+    // set player and computers inital score line
     let playerscore = 0;
     let computerscore = 0;
-    for(let i = 0; i < 5; i++)
-    {
+    const buttons = document.querySelectorAll('button');
 
-        answer = playersetup();
+    // we use the .forEach method to iterate through each button
+    buttons.forEach((button) => {
+    
+      // and for each one we add a 'click' listener
+      button.addEventListener('click', () => {
+        let val = button.id;
         let computerAnswer = computerChoice();
-        let score = playRound(answer, computerAnswer);
+        let score = playRound(val, computerAnswer);
         if(score == 1 )
         {
             playerscore++;
@@ -72,10 +57,32 @@ function game()
         {
             computerscore++;
         }
-        alert("Player Score: " + playerscore + " Computer Score: " + computerscore);
+        winner(playerscore, computerscore);
+        
+      });
+    });
+}
+function winner(playerScore, computerScore)
+{
+    if(playerScore != 5 && computerScore != 5)
+    {
+        document.getElementById("playScore").innerHTML = 'Player Score: ' + playerScore;
+        document.getElementById("compScore").innerHTML = 'Computer Score: ' + computerScore;
     }
-    winner(playerscore, computerscore);
-
+    else
+    {
+        if(playerScore == 5)
+        {
+            document.getElementById("end").innerHTML = 'Player Wins!';
+        }else
+        {
+            document.getElementById("end").innerHTML = 'Computer Wins!';
+        }
+    }
+}
+function game()
+{
+    playersetup();
 }
 console.log(game());
         
