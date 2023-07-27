@@ -3,11 +3,15 @@ body {
     display: flex;
     flex-direction: column;
     margin: 0;
+    background-color: black;
+    color: aquamarine;
 }
 h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    color: rgb(110, 252, 204);
 }
 p {
     display: flex;
@@ -33,13 +37,20 @@ p {
 }
 .score {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    gap: 12px;
 }
 .againbutton{
     display: flex;
     justify-content: center;
 }
+button {
+    margin: 12px;
+    background-color: black;
+    color: aquamarine;
+    border: 2px solid aquamarine;
+    font-size: 22px;
+}
 .again {
     visibility: hidden;
-    margin: 12px;
 }
