@@ -26,3 +26,20 @@ p {
     gap: 32px;
     align-items: center;
 }
+.bottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.score {
+    display: flex;
+    justify-content: space-around;
+}
+.againbutton{
+    display: flex;
+    justify-content: center;
+}
+.again {
+    visibility: hidden;
+    margin: 12px;
+}
